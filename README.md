@@ -1,5 +1,14 @@
 # MongoDB-statement-analysis
-analysis of mongodb financial statement using python
+
+The goal of the project is to extract MongoDB's financial data using the YahooFinance API in python thereby automating a process that would usually be much more time consuming.
+After automatically(a few seconds) importing the company's financial statements, some of the most significant values were selected and used to calculate financial ratios commonly used in the world of business analysis
+
+After the values were displayed on graphs for better understanding and to find insights.
+Continue reading to see the values found
+
+In alternative:
+ [click here]() to see the graph and the code
+ [click here]() to see only the code
 
 # income statement
 |   index   |     2020       |     2021       |     2022       |      2023       |
