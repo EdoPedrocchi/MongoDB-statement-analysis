@@ -7,8 +7,10 @@ After the values were displayed on graphs for better understanding and to find i
 Continue reading to see the values found
 
 In alternative:
- [click here]() to see the graph and the code
- [click here]() to see only the code
+
+ [click here](https://github.com/EdoPedrocchi/MongoDB-statement-analysis/blob/main/code-with-graphs.pdf) to see the graph and the code
+ 
+ [click here](https://github.com/EdoPedrocchi/MongoDB-statement-analysis/blob/main/CODE) to see only the code
 
 # income statement
 |   index   |     2020       |     2021       |     2022       |      2023       |
