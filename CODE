@@ -1,0 +1,578 @@
+import yfinance as yf
+import pandas as pd
+
+#import the income statement#
+#change the Ticker to chosse the company that you want to analyse#
+
+
+variable = yf.Ticker("MDB")
+df = variable.financials
+
+#correct the df#
+df2 = pd.DataFrame()
+df2[["2023","2022","2021","2020"]] = df
+
+#create skull dataframe#
+skull = {
+    "index": ["revenues", "EBITDA", "EBIT", "i_e", "NE"],  # FC= financial charges#
+    "2020": ["1", "1", "1", "1", "1"],
+    "2021": ["1", "1", "1", "1", "1"],
+    "2022": ["1", "1", "1", "1", "1"],
+    "2023": ["1", "1", "1", "1", "1"]
+}
+
+income_statement = pd.DataFrame(skull) 
+
+#now insert revenues in the df called income_statement#
+
+revenues = [0,0,0,0]
+x=0
+year= 2020
+
+while x <= 3:
+	revenues[x] = df2[str(year)]["Total Revenue"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+
+while x <= 3:
+	income_statement[str(year)][0] = revenues[x]
+	x= x + 1
+	year = year + 1
+
+
+#make the same operation with the othets variables of the df income_statement#
+
+#EBTDA#
+
+ebitda = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	ebitda[x] = df2[str(year)]["EBITDA"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	income_statement[str(year)][1] = ebitda[x]
+	x= x + 1
+	year = year + 1
+
+
+
+
+#EBIT#
+ebit = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	ebit[x] = df2[str(year)]["EBIT"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	income_statement[str(year)][2] = ebit[x]
+	x= x + 1
+	year = year + 1
+
+
+#i_e = interest expense#
+
+i_e = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	i_e[x] = df2[str(year)]["Interest Expense"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	income_statement[str(year)][3] = i_e[x]
+	x= x + 1
+	year = year + 1
+
+#NE = net income#
+
+NE = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	NE[x] = df2[str(year)]["Net Income"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	income_statement[str(year)][4] = NE[x]
+	x= x + 1
+	year = year + 1
+
+
+#############################################################################
+#now analyze the balance sheet#
+
+df3 = variable.balance_sheet
+
+#correct the df#
+df4 = pd.DataFrame()
+df4[["2023","2022","2021","2020"]] = df3
+
+#create skull dataframe#
+
+#PPE = property plan equipment#
+
+skull2 = {
+    "index": ["PPE", "Good will",  "Net Recivables", "CL", "CA","WC", "invested capital", "net debt", "Stockholders Equity"],  # FC= financial charges#
+    "2020": [ "1", "1", "1", "1", "1", "1", "1","1", "1"],
+    "2021": [  "1", "1", "1", "1", "1", "1", "1","1", "1"],
+    "2022": [ "1", "1", "1", "1", "1", "1", "1","1", "1"],
+    "2023": [  "1", "1", "1", "1", "1", "1", "1","1", "1"]
+}
+balance_sheet = pd.DataFrame(skull2)
+
+#PPE#
+PPE = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	PPE[x] = df4[str(year)]["Net PPE"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	balance_sheet[str(year)][0] = PPE[x]
+	x= x + 1
+	year = year + 1
+
+
+
+#goodwill#
+Goodwill = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	Goodwill[x] = df4[str(year)]["Goodwill"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	balance_sheet[str(year)][2] = Goodwill[x]
+	x= x + 1
+	year = year + 1
+
+
+
+
+
+#Net Recivables#
+Net_Recivables= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	Net_Recivables[x] = df4[str(year)]["Accounts Receivable"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	balance_sheet[str(year)][4] = Net_Recivables[x]
+	x= x + 1
+	year = year + 1
+
+#current liabilites(CL)#
+CL= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	CL[x] = df4[str(year)]["Current Liabilities"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	balance_sheet[str(year)][5] = CL[x]
+	x= x + 1
+	year = year + 1
+
+#current assets#
+
+CA= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	CA[x] = df4[str(year)]["Current Assets"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	balance_sheet[str(year)][6] = CA[x]
+	x= x + 1
+	year = year + 1
+
+#Working capital (WC) = Current assets-current liabilities#
+
+WC= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	WC[x] = CA[x] - CL[x]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	balance_sheet[str(year)][7] = WC[x]
+	x= x + 1
+	year = year + 1
+
+
+#invested capial#
+
+
+Invested_Capital = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	Invested_Capital[x] = df4[str(year)]["Invested Capital"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	balance_sheet[str(year)][8] = Invested_Capital[x]
+	x= x + 1
+	year = year + 1
+
+#net debt#
+Net_debt = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	Net_debt[x] = df4[str(year)]["Net Debt"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	balance_sheet[str(year)][9] = Net_debt[x]
+	x= x + 1
+	year = year + 1
+
+#total stockholder equity#
+Stockholders_Equity = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	Stockholders_Equity[x] = df4[str(year)]["Stockholders Equity"]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	balance_sheet[str(year)][10] = Stockholders_Equity[x]
+	x= x + 1
+	year = year + 1
+
+
+
+
+#######################################################################
+#ratio#
+
+skull3 = {
+    "index": ["ROI", "ROS", "capital turnover", "EBITDA ANALYSIS", "WC/revenues", "Days Sales Outstanding(dso)", "Debt Sustainability","LEVERAGE", "ebitda/interest expense",],  # FC= financial charges#
+    "2020": ["1", "1", "1", "1", "1", "1", "1", "1", "1"],
+    "2021": ["1", "1", "1", "1", "1", "1", "1", "1", "1"],
+    "2022": ["1", "1", "1", "1", "1", "1", "1", "1", "1"],
+    "2023": ["1", "1", "1", "1", "1", "1", "1", "1", "1"]
+}
+
+ratio = pd.DataFrame(skull3)
+
+#ROI#
+ROI= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	ROI[x] = ebit[x]/Invested_Capital[x]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	ratio[str(year)][0] = ROI[x]
+	x= x + 1
+	year = year + 1
+
+#ROS#
+ROS= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	ROS[x] = ebit[x]/revenues[x]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	ratio[str(year)][1] = ROS[x]
+	x= x + 1
+	year = year + 1
+
+
+#capital turnover#
+capital_turnover = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	capital_turnover[x] = revenues[x]/Invested_Capital[x]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	ratio[str(year)][2] = capital_turnover[x]
+	x= x + 1
+	year = year + 1
+
+
+
+#ebitda analysis (ebitda/revenues)#
+ebitda_analysis= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	ebitda_analysis[x] = ebitda[x]/revenues[x]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	ratio[str(year)][3] = ebitda_analysis[x]
+	x= x + 1
+	year = year + 1
+
+#wc/revenues#
+wc_revenues= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	wc_revenues[x] = WC[x]/revenues[x]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	ratio[str(year)][4] = wc_revenues[x]
+	x= x + 1
+	year = year + 1
+
+#Days Sales Outstanding(DSO)#
+
+DSO= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	DSO[x] = Net_Recivables[x]/(revenues[x]/360)
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	ratio[str(year)][5] = DSO[x]
+	x= x + 1
+	year = year + 1
+
+
+#Debt Sustainability Ratio (DSR)#
+
+DSR= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	DSR[x] = Net_debt[x]/ebitda[x]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	ratio[str(year)][6] = DSR[x]
+	x= x + 1
+	year = year + 1
+
+
+
+#leverage#
+leverage= [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	leverage[x] = Net_debt[x]/Stockholders_Equity[x]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	ratio[str(year)][7] = leverage[x]
+	x= x + 1
+	year = year + 1
+
+
+#ebitda/interest expense#
+
+
+ebitda_interest_exp = [0,0,0,0]
+x=0
+year = 2020
+
+while x <= 3:
+	ebitda_interest_exp[x] = ebitda[x]/i_e[x]
+	x=x + 1
+	year = year + 1
+
+
+x=0
+year = 2020
+while x <= 3:
+	ratio[str(year)][8] = ebitda_interest_exp[x]
+	x= x + 1
+	year = year + 1
+
+
+
+
+#verify#
+
+print(balance_sheet)
+print(df4)
+print(income_statement)
+print(df2)
+
+print(ratio)
+
+
+
+
+#export in excel#
+
+#file_path = "/Users/pedrocchiedoardo/Desktop/redige/bilancio/analisi.xlsx"
+#path = pd.ExcelWriter(file_path)
+#income_statement.to_excel(path, sheet_name="income", index=False)
+#balance_sheet.to_excel(path, sheet_name="balance", index=False)
+#ratio.to_excel(path, sheet_name="ratio", index=False)
+#path.close()
+
+#data visualization#
+import matplotlib.pyplot as plt
+#visualize the income statement#
+
+income_statement.set_index('index', inplace=True)
+
+for index, row in income_statement.iterrows():
+    plt.figure(figsize=(10, 6))
+    plt.bar(income_statement.columns, row, color='skyblue', alpha=0.7, label='Bar')
+    plt.plot(income_statement.columns, row, marker='o', color='red', label='Line')
+    plt.title(f' {index}')
+    plt.xlabel('Year')
+    plt.ylabel('Value')
+    plt.legend()
+    plt.show()
+
+#visualize the balance seet#
+
+balance_sheet.set_index('index', inplace=True)
+
+for index, row in balance_sheet.iterrows():
+    plt.figure(figsize=(10, 6))
+    plt.bar(balance_sheet.columns, row, color='skyblue', alpha=0.7, label='Bar')
+    plt.plot(balance_sheet.columns, row, marker='o', color='red', label='Line')
+    plt.title(f'{index}')
+    plt.xlabel('Year')
+    plt.ylabel('Value')
+    plt.legend()
+    plt.show()
+#visualize the ratio#
+
+ratio.set_index('index', inplace=True)
+
+for index, row in ratio.iterrows():
+    plt.figure(figsize=(10, 6))
+    plt.bar(ratio.columns, row, color='skyblue', alpha=0.7, label='Bar')
+    plt.plot(ratio.columns, row, marker='o', color='red', label='Line')
+    plt.title(f'{index}')
+    plt.xlabel('Year')
+    plt.ylabel('Value')
+    plt.legend()
+    plt.show()
