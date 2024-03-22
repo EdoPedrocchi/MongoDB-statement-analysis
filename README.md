@@ -8,7 +8,7 @@ Continue reading to see the values found
 
 In alternative:
 
- [click here](https://github.com/EdoPedrocchi/MongoDB-statement-analysis/blob/main/code-with-graphs.pdf) to see the graph and the code
+ [click here](https://github.com/EdoPedrocchi/MongoDB-statement-analysis/blob/main/code-with-graphs.pdf) to see graphs and code
  
  [click here](https://github.com/EdoPedrocchi/MongoDB-statement-analysis/blob/main/CODE) to see only the code
 
